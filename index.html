@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Estanco MalaCopa</title>
+  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+    <script src="js/materialize.min.js"></script>
+
+<style>
+  .delineado3,
+.delineado{
+  color: white; /* color del relleno */
+  -webkit-text-stroke: 1px black; 
+}
+
+
+
+/* Texto super legible para la tercera tarjeta */
+.card-title-enhanced {
+    text-shadow: 
+        3px 3px 3px #000000
+;
+    background: linear-gradient(rgba(0,0,0,0.7));
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    display: inline-block !important;
+
+}
+/* Estilo para títulos clickeables */
+.card-title-clickable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.card-title-clickable:hover {
+    transform: scale(1.05);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.card-title-clickable::after {
+    content: '▼';
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+}
+
+
+
+/* menu desplegable */
+.submenu {
+  display: none;
+  margin-top: 15px;
+  padding: 15px 20px;
+  list-style-type: none;
+  background: linear-gradient( #f8f9fa, #e9ecef);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-left: 4px solid #6d4c41;
+  transition: all 0.3s ease;
+}
+
+.submenu.show {
+  display: block;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.submenu li {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  color: #5d4037;
+  margin: 4px 0;
+}
+
+.submenu li:hover {
+  background: #6d4c41;
+  color: white;
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(109, 76, 65, 0.3);
+}
+
+.submenu li::before {
+  content: '•';
+  margin-right: 8px;
+  color: #6d4c41;
+  font-weight: bold;
+}
+
+.submenu li:hover::before {
+  color: #ffb74d;
+}
+
+/* cards */
+.card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.card-image img {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.02);
+}
+</style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body> 
+
+  <!-- Nav bar -->
+  <nav class="brown darken-3">
+    <div class="nav-wrapper container">
+      <a href="#!" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-wrapper">
+            <div class="col s12">
+                <a href="" class="breadcrumb">Primero</a>
+                <a href="" class="breadcrumb">Segundo</a>
+                <a href="" class="breadcrumb">Tercero</a>
+                <a href="" class="breadcrumb">Final</a>
+            </div>
+        </div>
+
+    </div>
+  </nav>
+
+  <nav>
+    <div class="nav-wrapper blue-grey darken-4">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+<ul class="sidenav" id="mobile-demo">
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+</ul>
+  <!-- Hero -->
+  <div class="parallax-container">
+    
+    <div class="parallax"><img src="images/BeerStore.jpg" width="1300" height="1300"></div>
+    <div class="container center" style="margin-top: 120px;">
+      <h3 class="delineado white-text">Bienvenido al website de</h3>
+      <h3 class="delineado white-text">Estanco MalaCopa</h3>
+      <p class="delineado3  flow-text">El sitio perfecto sin preocupaciones y una buena bebida</p>
+    </div>
+  </div>
+
+  <!-- productos -->
+  <div class="section" id="productos">
+    <div class="container">
+      <h4 class="center">Nuestros Productos</h4>
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="images/cervezas.jpg" width="250" height="250" >
+              <span class="card-title white-text card-title-clickable" onclick="toggleSubmenu('menu-cervezas', this)">Cervezas</span>
+            </div>
+            <div class="card-content">
+              <p>Gran variedad de cervezas nacionales e importadas.</p>
+              <ul id="menu-cervezas" class="submenu">
+                <li>Aguila original</li>
+                <li>Aguila Light</li>
+                <li>Costeña</li>
+                <li>Poker</li>
+                <li>Heineken</li>
+                <li>Corona</li>
+                <li>Stella Artois</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="images/Liquors.jpg" width="250px" height="250px">
+              <span class="card-title white-text card-title-clickable" onclick="toggleSubmenu('menu-licores', this)">Licores</span>
+            </div>
+            <div class="card-content">
+              <p>Whisky, ron, aguardiente y mucho más.</p>
+              <ul id="menu-licores" class="submenu">
+                <li>Whisky JackDaniels</li>
+                <li>Whisky Buchanans</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="images/Snacks_y_mas.jpg" width="250px" height="250px">
+              <span class="card-title white-text card-title-clickable card-title-enhanced" onclick="toggleSubmenu('menu-snacks', this)">Snacks y mas</span>
+            </div>
+            <div class="card-content">
+              <p>Cigarrilos, snacks y variedades.</p>
+              <ul id="menu-snacks" class="submenu">
+                <li>Cigarrillos (Marlboro, Chesterfield, L&M)</li>
+                <li>Papas Margarita</li>
+                <li>Gaseosas personales</li>
+                <li>Chicles Trident</li>
+                <li>Doritos</li>
+                <li>De Todito</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- nosotros -->
+  <div class="section brown lighten-5" id="nosotros">
+    <div class="container">
+      <h4 class="center">Sobre Nosotros</h4>
+      <p class="flow-text center">
+        Somos un estanco con más de 10 años ofreciendo calidad y confianza.  
+        Nuestra misión es brindar a nuestros clientes la mejor experiencia en la compra de licores y entretenimiento.
+      </p>
+    </div>
+  </div>
+
+  <!-- contacto -->
+  <div class="section" id="contacto">
+    <div class="container">
+      <h4 class="center">Contáctanos</h4>
+      <div class="row">
+        <form class="col s12 m8 offset-m2">
+          <div class="input-field">
+            <input id="nombre" type="text" class="validate">
+            <label for="nombre">Nombre</label>
+          </div>
+          <div class="input-field">
+            <input id="email" type="email" class="validate">
+            <label for="email">Correo</label>
+          </div>
+          <div class="input-field">
+            <textarea id="mensaje" class="materialize-textarea"></textarea>
+            <label for="mensaje">Mensaje</label>
+          </div>
+          <div class="center">
+            <button class="btn brown darken-2 waves-effect waves-light" type="submit">
+              Enviar <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<ul class="pagination center">
+  <li class="disabled"><a href=""><i class="material-icons">chevron_left</i></a></li>
+  <li class="active"><a href="">1</a></li>
+  <li class="waves-effect"><a href="">2</a></li>
+  <li class="waves-effect"><a href="">3</a></li>  
+  <li class="waves-effect"><a href="">4</a></li>
+  <li class="waves-effect"><a href="">5</a></li>
+  <li class="waves-effect"><a href=""><i class="material-icons">chevron_right</i></a></li>
+</ul>
+
+  <!-- Footer -->
+  <footer class="page-footer brown darken-3">
+    <div class="container center">
+      © 2025 Estanco MalaCopa - Todos los derechos reservados
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+        $('.parallax').parallax();
+    })
+
+</script>
+
+<script>
+
+  function toggleSubmenu(menuId, titleElement) {
+    // Obtenemos el submenu que corresponde al título clickeado
+    const submenu = document.getElementById(menuId);
+
+    submenu.classList.toggle('show');
+    titleElement.classList.toggle('active');
+  }
+  </script>
+
+</body>
+</html>
