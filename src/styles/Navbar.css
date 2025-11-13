@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Cinzel:wght@600&display=swap");
+
+/* ===== NAVBAR BASE ===== */
+.nav-estanco {
+  background-color: #000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 15px;
+  animation: fadeInNavbar 0.8s ease-in-out;
+}
+
+.nav-wrapper.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== LOGO (IZQUIERDA) ===== */
+.logo-animada {
+  font-family: "Cinzel", serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  animation: fadeInText 1s ease-out;
+  transition: transform 0.4s ease, text-shadow 0.4s ease;
+}
+
+.logo-animada:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px #d4af37, 0 0 20px #d4af37;
+}
+
+.logo-estanco {
+  color: #fff;
+  font-weight: 500;
+}
+
+.logo-malacopa {
+  color: #fff;
+  font-weight: 700;
+  margin-left: 6px;
+  position: relative;
+}
+
+/* Efecto de brillo sobre "MalaCopa" */
+.logo-malacopa::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(120deg, transparent, rgba(212, 175, 55, 0.7), transparent);
+  animation: shine 4s infinite;
+}
+
+/* ===== MENÚ DERECHA ===== */
+.nav-links {
+  display: flex;
+  gap: 30px; /* separación entre las palabras */
+  align-items: center;
+  font-family: "Playfair Display", serif;
+}
+
+.nav-item {
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #d4af37 !important;
+}
+
+.nav-item::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -3px;
+  left: 50%;
+  background-color: #d4af37;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-item:hover::after {
+  width: 60%;
+}
+
+/* ===== MENÚ MÓVIL ===== */
+.nav-mobile {
+  background-color: #000;
+  padding-top: 15px;
+}
+
+.nav-mobile a {
+  color: white !important;
+  font-family: "Playfair Display", serif;
+}
+
+.nav-mobile a:hover {
+  color: #d4af37 !important;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInNavbar {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    letter-spacing: 6px;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 1.5px;
+  }
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
